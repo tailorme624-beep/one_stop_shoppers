@@ -5,3 +5,12 @@ enum PaymentMethod { cod, mtn, airtel }
 } else {
   await initiateMobileMoney(method);
 }
+await FirebaseFirestore.instance.collection('orders').add({
+  'buyerId': buyerId,
+  'items': cartItems,
+  'totalAmount': total,
+  'paymentMethod': 'COD',
+  'paymentStatus': 'pending',
+  'orderStatus': 'processing',
+  'createdAt': FieldValue.serverTimestamp(),
+});
