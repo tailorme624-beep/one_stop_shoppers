@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../product/product_detail_screen.dart';
+import '../models/product_model.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -35,19 +38,38 @@ class HomeScreen extends StatelessWidget {
             ),
             itemCount: 6,
             itemBuilder: (context, index) {
-              return Card(
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Container(color: Colors.grey[300]),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text('Product Name'),
-                    ),
-                  ],
-                ),
-              );
+                                        final product = Product(
+                            id: '$index',
+                            name: 'Product $index',
+                            price: 25000 + index * 1000,
+                            description: 'High quality product from One Stop Shoppers.',
+                            image: '',
+                          );
+                          
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => ProductDetailScreen(product: product),
+                                ),
+                              );
+                            },
+                            child: Card(
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: Container(color: Colors.grey[300]),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(product.name),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+
             },
           ),
         ],
