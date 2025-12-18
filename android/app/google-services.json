@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1094101181560",
+    "project_id": "onestopshoppers-aab9d",
+    "storage_bucket": "onestopshoppers-aab9d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1094101181560:android:1986a62e4f55d110e2798d",
+        "android_client_info": {
+          "package_name": "com.onestopshoppers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1094101181560-feobrav2mtbue6ecsdt0hdicfk515t8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQpqI4p8bA2PCqqbpbmSvFAVe47bMtPps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1094101181560-feobrav2mtbue6ecsdt0hdicfk515t8r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1094101181560-53eu7430h8roiqqi638m4vm4hj71pjeu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oneStopShoppers"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
