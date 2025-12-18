@@ -20,6 +20,12 @@ class HomeScreen extends StatelessWidget {
               Navigator.pushNamed(context, '/cart');
             },
           )
+          IconButton(
+              icon: const Icon(Icons.notifications),
+              onPressed: () {
+                Navigator.pushNamed(context, '/notifications');
+              },
+            ),
         ],
       ),
       body: StreamBuilder<List<Product>>(
