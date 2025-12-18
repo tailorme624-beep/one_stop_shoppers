@@ -14,14 +14,23 @@ class ProductDetailScreen extends StatelessWidget {
       appBar: AppBar(title: Text(product.name)),
       body: Column(
         children: [
-          Container(
-            height: 250,
-            color: Colors.grey[300],
-            child: Center(
-              child: Text('Product Image'),
-            ),
-          ),
-
+                        SizedBox(
+                height: 250,
+                child: PageView(
+                  children: product.images.isNotEmpty
+                      ? product.images
+                          .map(
+                            (img) => Image.network(
+                              img,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                          .toList()
+                      : [
+                          Container(color: Colors.grey[300]),
+                        ],
+                ),
+              ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16),
