@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import '../product/product_detail_screen.dart';
+import '../product/product_service.dart';
 import '../models/product_model.dart';
-
+import '../product/product_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final productService = ProductService();
 
   @override
   Widget build(BuildContext context) {
@@ -20,61 +22,80 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          const Text(
-            'Featured Products',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 16),
+      body: StreamBuilder<List<Product>>(
+        stream: productService.getActiveProducts(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No products available'));
+          }
+
+          final products = snapshot.data!;
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 0.7,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
             ),
-            itemCount: 6,
+            itemCount: products.length,
             itemBuilder: (context, index) {
-                                        final product = Product(
-                            id: '$index',
-                            name: 'Product $index',
-                            price: 25000 + index * 1000,
-                            description: 'High quality product from One Stop Shoppers.',
-                            image: '',
-                          );
-                          
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) => ProductDetailScreen(product: product),
-                                ),
-                              );
-                            },
-                            child: Card(
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    child: Container(color: Colors.grey[300]),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(product.name),
-                                  ),
-                                ],
+              final product = products[index];
+
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          ProductDetailScreen(product: product),
+                    ),
+                  );
+                },
+                child: Card(
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: product.images.isNotEmpty
+                            ? Image.network(
+                                product.images.first,
+                                fit: BoxFit.cover,
+                              )
+                            : Container(color: Colors.grey[300]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              product.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'UGX ${product.price.toStringAsFixed(0)}',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          );
-
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
             },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
 }
-
