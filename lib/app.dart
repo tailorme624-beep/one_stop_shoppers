@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'core/theme/app_theme.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'routes/app_routes.dart';
 
 class OSSApp extends StatelessWidget {
@@ -7,13 +7,18 @@ class OSSApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'One Stop Shoppers',
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.login,
-      routes: AppRoutes.routes,
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          initialRoute: snapshot.data == null
+              ? AppRoutes.login
+              : AppRoutes.home,
+          routes: AppRoutes.routes,
+        );
+      },
     );
   }
 }
-
