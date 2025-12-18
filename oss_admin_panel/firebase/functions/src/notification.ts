@@ -17,3 +17,18 @@ export const notifyAdminOnSellerCreate = functions.firestore
     });
   });
 
+export const notifyAdminOnProductSubmission = functions.firestore
+  .document("product_submissions/{id}")
+  .onCreate(async () => {
+    await db.collection("notifications").add({
+      senderRole: "system",
+      receiverRole: "admin",
+      title: "New Product Submission",
+      message: "A seller submitted a product for approval",
+      type: "product",
+      isRead: false,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+  });
+
+
