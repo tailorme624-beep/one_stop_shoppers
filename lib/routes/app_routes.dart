@@ -1,6 +1,12 @@
 import '../features/buyer/checkout/shipping_address_screen.dart';
 import '../features/buyer/checkout/payment_method_screen.dart';
 import '../features/buyer/checkout/order_review_screen.dart';
+import '../features/buyer/order/order_history_screen.dart';
+
+static const orders = '/orders';
+
+routes[orders] = (_) => const OrderHistoryScreen();
+
 
 static const shipping = '/shipping';
 static const payment = '/payment';
