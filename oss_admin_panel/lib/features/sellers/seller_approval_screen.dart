@@ -35,6 +35,7 @@ class SellerApprovalScreen extends StatelessWidget {
                         icon: const Icon(Icons.check, color: Colors.green),
                         onPressed: () {
                           seller.reference.update({'status': 'approved'});
+                          
                         },
                       ),
                       IconButton(
@@ -43,6 +44,17 @@ class SellerApprovalScreen extends StatelessWidget {
                           seller.reference.update({'status': 'rejected'});
                         },
                       ),
+                        IconButton(
+                          icon: const Icon(Icons.message),
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (_) => SendMessageDialog(
+                                sellerId: seller.id,
+                              ),
+                            );
+                          },
+                        ),
                     ],
                   ),
                 ),
