@@ -1,1 +1,2 @@
+home: const AdminDashboard(),
 
