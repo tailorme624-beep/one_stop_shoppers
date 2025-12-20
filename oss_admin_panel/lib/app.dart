@@ -1,2 +1,2 @@
-home: const AdminDashboard(),
+home: void AdminDashboard(),
 

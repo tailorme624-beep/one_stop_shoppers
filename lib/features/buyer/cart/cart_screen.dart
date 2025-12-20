@@ -43,7 +43,7 @@ class CartScreen extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          navigator.pushNamed(context, '/shipping');
+                          Navigator.pushNamed(context, '/shipping');
                         },
                         child: const Text('Proceed to Checkout'),
                       ),
@@ -55,4 +55,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-

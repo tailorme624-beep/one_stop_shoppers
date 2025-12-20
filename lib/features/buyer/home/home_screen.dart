@@ -19,13 +19,13 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pushNamed(context, '/cart');
             },
-          )
+          ),
           IconButton(
-              icon: const Icon(Icons.notifications),
-              onPressed: () {
-                Navigator.pushNamed(context, '/notifications');
-              },
-            ),
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              Navigator.pushNamed(context, '/notifications');
+            },
+          ),
         ],
       ),
       body: StreamBuilder<List<Product>>(
@@ -58,8 +58,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) =>
-                          ProductDetailScreen(product: product),
+                      builder: (_) => ProductDetailScreen(product: product),
                     ),
                   );
                 },

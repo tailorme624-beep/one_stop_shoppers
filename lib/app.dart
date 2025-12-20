@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'routes/app_routes.dart';
+import 'core/theme/app_theme.dart';
 
 class OSSApp extends StatelessWidget {
   const OSSApp({super.key});

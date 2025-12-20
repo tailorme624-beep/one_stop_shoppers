@@ -7,13 +7,13 @@ if (method == PaymentMethod.cod) {
 }
 
 await FirebaseFirestore.instance.collection('orders').add({
-  'buyerId': buyerId,
-  'items': cartItems,
-  'totalAmount': total,
-  'paymentMethod': 'COD',
-  'paymentStatus': 'pending',
-  'orderStatus': 'processing',
-  'createdAt': FieldValue.serverTimestamp(),
+  'buyerId' = buyerId,
+  'items' = cartItems,
+  'totalAmount' = total,
+  'paymentMethod' = 'COD',
+  'paymentStatus' = 'pending',
+  'orderStatus' = 'processing',
+  'createdAt' = FieldValue.serverTimestamp(),
 });
 final callable = FirebaseFunctions.instance
     .httpsCallable('initiateMobileMoney');
