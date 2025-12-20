@@ -33,7 +33,7 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("oss_key.jks")
+            storeFile = file("oss_key_new.jks")
             storePassword = "0987654321"
             keyAlias = "oss_key"
             keyPassword = "0987654321"
