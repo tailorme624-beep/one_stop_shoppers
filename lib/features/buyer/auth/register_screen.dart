@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import '../../../core/services/auth_service.dart';
 
@@ -43,20 +45,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
             ElevatedButton(
               onPressed: () async {
-                await auth.registerBuyer(
-                  emailCtrl.text,
-                  passCtrl.text,
-                );
-                if (mounted) {
-                  Navigator.pushReplacementNamed(context, '/home');
-                }
+                await auth.registerBuyer(emailCtrl.text, passCtrl.text);
+                if (!mounted) return;
+                Navigator.pushReplacementNamed(context, '/home');
               },
               child: const Text('Register'),
-            )
+            ),
           ],
         ),
       ),
     );
   }
 }
-

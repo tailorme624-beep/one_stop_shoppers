@@ -1,11 +1,18 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'notification_service.dart';
 import 'notification_model.dart';
 import 'notification_detail_screen.dart';
 
-class NotificationsScreen extends StatelessWidget {
+class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
+  @override
+  State<NotificationsScreen> createState() => _NotificationsScreenState();
+}
+
+class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     final service = NotificationService();
@@ -31,9 +38,7 @@ class NotificationsScreen extends StatelessWidget {
               final n = notifications[index];
               return ListTile(
                 leading: Icon(
-                  n.type == 'order'
-                      ? Icons.local_shipping
-                      : Icons.campaign,
+                  n.type == 'order' ? Icons.local_shipping : Icons.campaign,
                   color: n.isRead ? Colors.grey : Colors.green,
                 ),
                 title: Text(n.title),
@@ -42,17 +47,15 @@ class NotificationsScreen extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
-                trailing: n.isRead
-                    ? null
-                    : const Icon(Icons.circle, size: 10),
+                trailing: n.isRead ? null : const Icon(Icons.circle, size: 10),
                 onTap: () async {
                   await service.markAsRead(n.id);
 
+                  if (!mounted) return;
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) =>
-                          NotificationDetailScreen(notification: n),
+                      builder: (_) => NotificationDetailScreen(notification: n),
                     ),
                   );
                 },

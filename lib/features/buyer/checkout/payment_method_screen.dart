@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
@@ -16,23 +18,26 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       appBar: AppBar(title: const Text('Payment Method')),
       body: Column(
         children: [
-          Radio(
+          RadioListTile<String>(
+            title: const Text('Mobile Money'),
             value: 'Mobile Money',
             groupValue: selectedMethod,
             onChanged: (value) {
-              setState(() => selectedMethod = value!);
+              setState(() {
+                selectedMethod = value!;
+              });
             },
           ),
-          const Text('Mobile Money'),
-          Radio(
+          RadioListTile<String>(
+            title: const Text('Credit / Debit Card'),
             value: 'Card',
             groupValue: selectedMethod,
             onChanged: (value) {
-              setState(() => selectedMethod = value!);
+              setState(() {
+                selectedMethod = value!;
+              });
             },
           ),
-          const Text('Credit / Debit Card'),
-
           const Spacer(),
 
           Padding(
