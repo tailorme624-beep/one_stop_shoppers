@@ -56,7 +56,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 final email = _emailController.text;
                 final password = _passwordController.text;
                 await auth.login(email, password);
-                Navigator.pushReplacementNamed(context, '/home');
+                if (mounted) {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
               },
             ),
           ],

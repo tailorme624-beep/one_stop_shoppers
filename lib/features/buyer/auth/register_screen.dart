@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import '../../../core/services/auth_service.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
   final auth = AuthService();
+
+  @override
+  void dispose() {
+    emailCtrl.dispose();
+    passCtrl.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +47,9 @@ class RegisterScreen extends StatelessWidget {
                   emailCtrl.text,
                   passCtrl.text,
                 );
-                Navigator.pushReplacementNamed(context, '/home');
+                if (mounted) {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
               },
               child: const Text('Register'),
             )

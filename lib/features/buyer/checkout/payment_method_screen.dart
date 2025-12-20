@@ -16,22 +16,22 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       appBar: AppBar(title: const Text('Payment Method')),
       body: Column(
         children: [
-          RadioListTile(
-            title: const Text('Mobile Money'),
+          Radio(
             value: 'Mobile Money',
             groupValue: selectedMethod,
             onChanged: (value) {
               setState(() => selectedMethod = value!);
             },
           ),
-          RadioListTile(
-            title: const Text('Credit / Debit Card'),
+          const Text('Mobile Money'),
+          Radio(
             value: 'Card',
             groupValue: selectedMethod,
             onChanged: (value) {
               setState(() => selectedMethod = value!);
             },
           ),
+          const Text('Credit / Debit Card'),
 
           const Spacer(),
 
@@ -43,10 +43,9 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
               },
               child: const Text('Review Order'),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-

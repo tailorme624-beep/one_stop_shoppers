@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'order_model.dart';
 import '../cart/cart_controller.dart';
 
 class OrderService {

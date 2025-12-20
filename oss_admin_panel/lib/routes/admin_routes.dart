@@ -1,3 +1,5 @@
+// ignore_for_file: strict_top_level_inference
+
 import 'package:flutter/material.dart';
 import '../features/sellers/seller_approval_screen.dart';
 import '../features/products/product_queue_screen.dart';
