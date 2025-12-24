@@ -11,7 +11,7 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/onestop.png', width: 150, height: 150),
+            Image.asset('lib/assets/onestop.png', width: 150, height: 150),
             const SizedBox(height: 20),
             const Text(
               'One Stop Shoppers',
