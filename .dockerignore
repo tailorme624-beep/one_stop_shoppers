@@ -1,0 +1,49 @@
+flu# Flutter build artifacts
+build/
+android/app/build/
+ios/Flutter/App.framework/
+ios/Flutter/Flutter.framework/
+ios/build/
+linux/build/
+macos/build/
+windows/build/
+
+# Flutter plugins
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# Pub cache
+.dart_tool/
+.packages
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Node modules if any
+node_modules/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
