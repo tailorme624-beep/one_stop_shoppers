@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'routes/app_routes.dart';
 import 'core/theme/app_theme.dart';
+import 'splash_screen.dart';
 
 class OSSApp extends StatelessWidget {
   const OSSApp({super.key});
@@ -11,7 +12,11 @@ class OSSApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(body: Center(child: Text("App Loaded"))),
+      title: 'One Stop Shoppers',
+      theme: AppTheme.lightTheme,
+      initialRoute: '/',
+      routes: AppRoutes.routes,
+      home: const SplashScreen(),
     );
   }
 }
