@@ -7,6 +7,11 @@ import '../features/buyer/checkout/payment_method_screen.dart';
 import '../features/buyer/checkout/order_review_screen.dart';
 import '../features/buyer/order/order_history_screen.dart';
 import '../features/buyer/notifications/notifications_screen.dart';
+import '../features/legal/privacy_policy_screen.dart';
+import '../features/legal/terms_conditions_buyers_screen.dart';
+import '../features/legal/terms_conditions_sellers_screen.dart';
+import '../features/legal/terms_service_buyers_screen.dart';
+import '../features/legal/terms_service_sellers_screen.dart';
 
 class AppRoutes {
   static const login = '/login';
@@ -17,6 +22,11 @@ class AppRoutes {
   static const shipping = '/shipping';
   static const payment = '/payment';
   static const review = '/review';
+  static const privacyPolicy = '/privacy-policy';
+  static const termsConditionsBuyers = '/terms-conditions-buyers';
+  static const termsConditionsSellers = '/terms-conditions-sellers';
+  static const termsServiceBuyers = '/terms-service-buyers';
+  static const termsServiceSellers = '/terms-service-sellers';
 
   static Map<String, WidgetBuilder> routes = {
     login: (_) => LoginScreen(),
@@ -27,5 +37,10 @@ class AppRoutes {
     shipping: (_) => ShippingAddressScreen(),
     payment: (_) => PaymentMethodScreen(),
     review: (_) => OrderReviewScreen(),
+    privacyPolicy: (_) => PrivacyPolicyScreen(),
+    termsConditionsBuyers: (_) => TermsConditionsBuyersScreen(),
+    termsConditionsSellers: (_) => TermsConditionsSellersScreen(),
+    termsServiceBuyers: (_) => TermsServiceBuyersScreen(),
+    termsServiceSellers: (_) => TermsServiceSellersScreen(),
   };
 }
