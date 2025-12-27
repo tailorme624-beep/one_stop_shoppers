@@ -5,17 +5,6 @@ import 'app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-  } catch (e) {
-    // Handle unsupported platforms gracefully
-    if (e is UnsupportedError) {
-      // Firebase not configured for this platform, continue without Firebase
-    } else {
-      rethrow;
-    }
-  }
+  await Firebase.initializeApp();
   runApp(const OSSApp());
 }
