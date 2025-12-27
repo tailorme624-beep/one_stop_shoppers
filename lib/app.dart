@@ -8,25 +8,8 @@ class OSSApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: Scaffold(body: Center(child: CircularProgressIndicator())),
-          );
-        }
-
-        final isAuthenticated = snapshot.hasData && snapshot.data != null;
-
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          initialRoute: isAuthenticated ? AppRoutes.home : AppRoutes.login,
-          routes: AppRoutes.routes,
-        );
-      },
+    return MaterialApp(
+      home: Scaffold(body: Center(child: Text("App Loaded"))),
     );
   }
 }
